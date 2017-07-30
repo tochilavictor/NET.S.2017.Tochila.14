@@ -20,7 +20,7 @@ namespace Logic
             Right = right;
         }
     }
-    class BinarySearchTree<T> : IEnumerable<T>
+    public class BinarySearchTree<T> : IEnumerable<T>
     {
         private ThreeNode<T> root;
         private Comparer<T> comparer;
@@ -94,7 +94,7 @@ namespace Logic
                     }
                     tmp = tmp.Left;
                 }
-                else if (comparer.Compare(value, tmp.data) > 0)
+                else
                 {
                     if (tmp.Right == null)
                     {

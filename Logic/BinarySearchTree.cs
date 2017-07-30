@@ -30,8 +30,8 @@ namespace Logic
         #region cctors
         public BinarySearchTree() 
         {
-            T tmp = default(T);
-            if (tmp is IComparer || tmp is IComparable)
+            if (typeof(T).GetInterfaces().Contains(typeof(IComparable)) || typeof(T).GetInterfaces().Contains(typeof(IComparable<T>))
+                || typeof(T).GetInterfaces().Contains(typeof(IComparer)) || typeof(T).GetInterfaces().Contains(typeof(IComparer<T>)))
             {
                 TreeBuilder(null, Comparer<T>.Default);
             }
@@ -40,8 +40,8 @@ namespace Logic
         }
         public BinarySearchTree(IEnumerable<T> collection)
         {
-            T tmp = default(T);
-            if (tmp is IComparer || tmp is IComparable)
+            if (typeof(T).GetInterfaces().Contains(typeof(IComparable)) || typeof(T).GetInterfaces().Contains(typeof(IComparable<T>))
+                || typeof(T).GetInterfaces().Contains(typeof(IComparer)) || typeof(T).GetInterfaces().Contains(typeof(IComparer<T>)))
             {
                 TreeBuilder(collection, Comparer<T>.Default);
             }

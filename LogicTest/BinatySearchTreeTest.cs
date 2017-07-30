@@ -27,6 +27,14 @@ namespace LogicTest
             return sum1.CompareTo(sum2);
         }
     }
+
+    public class StringLenghtComparer : Comparer<string>
+    {
+        public override int Compare(string x, string y)
+        {
+            return x.Length.CompareTo(y.Length);
+        }
+    }
     [TestFixture]
     public class BinatySearchTreeTest
     {
@@ -53,6 +61,36 @@ namespace LogicTest
             int[] actResult = new int[tree.Count];
             int i = 0;
             foreach (int elem in tree.InorderTraversal())
+            {
+                actResult[i] = elem;
+                i++;
+            }
+
+            Assert.AreEqual(expresult, actResult);
+        }
+        [TestCase(new string[] { "august", "september", "january", "december", "november" }, new string[] { "december", "november", "january", "september", "august"})]
+        public void PostOrder_DefaultStringComparer_PositiveTest(string[] collection, string[] expresult)
+        {
+            BinarySearchTree<string> tree = new BinarySearchTree<string>(collection);
+
+            string[] actResult = new string[tree.Count];
+            int i = 0;
+            foreach (string elem in tree.PostorderTraversal())
+            {
+                actResult[i] = elem;
+                i++;
+            }
+
+            Assert.AreEqual(expresult, actResult);
+        }
+        [TestCase(new string[] { "august", "september", "january", "december", "november" }, new string[] { "august", "january", "december", "november", "september" })]
+        public void InOrder_StringLenghtComparer_PositiveTest(string[] collection, string[] expresult)
+        {
+            BinarySearchTree<string> tree = new BinarySearchTree<string>(collection,new StringLenghtComparer());
+
+            string[] actResult = new string[tree.Count];
+            int i = 0;
+            foreach (string elem in tree.InorderTraversal())
             {
                 actResult[i] = elem;
                 i++;

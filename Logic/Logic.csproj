@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,12 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinarySearchTree.cs" />
-    <Compile Include="DiagonalMatrix.cs" />
+    <Compile Include="Matrixes\AbstractMatrix.cs" />
+    <Compile Include="Matrixes\DiagonalMatrix.cs" />
     <Compile Include="MathOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Set.cs" />
-    <Compile Include="SquareMatrix.cs" />
-    <Compile Include="SymmetricMatrix.cs" />
+    <Compile Include="Matrixes\SquareMatrix.cs" />
+    <Compile Include="Matrixes\SymmetricMatrix.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

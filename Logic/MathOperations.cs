@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,16 +15,16 @@ namespace Logic
         /// </summary>
         /// <param name="n">index of last number</param>
         /// <returns>enumeration of fibonacci numbers</returns>
-        public static IEnumerable<int> Fibonacci(int n)
+        private static IEnumerable<BigInteger> FibonacciLong(int n)
         {
-            if(n<1) throw new ArgumentOutOfRangeException($"{nameof(n)} must be natural");
-            int prevfib = 0;
-            int curfib = 1;
+            if (n < 1) throw new ArgumentOutOfRangeException($"{nameof(n)} must be natural");
+            BigInteger prevfib = 0;
+            BigInteger curfib = 1;
             int i = 0;
             while (i < n)
             {
                 yield return prevfib;
-                int tmp = curfib;
+                BigInteger tmp = curfib;
                 curfib = prevfib + curfib;
                 prevfib = tmp;
                 i++;

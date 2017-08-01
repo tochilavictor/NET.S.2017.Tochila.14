@@ -9,6 +9,13 @@ namespace Logic.Matrixes
 {
     public class MatrixOperations
     {
+        /// <summary>
+        /// implementation of addition operation for 2 squarematrix
+        /// </summary>
+        /// <typeparam name="T">type parameter</typeparam>
+        /// <param name="lhs">first matrix</param>
+        /// <param name="rhs">second matrix</param>
+        /// <returns>matrix, which is result of addition first and second</returns>
         public static SquareMatrix<T> Add<T>(SquareMatrix<T> lhs, SquareMatrix<T> rhs)
         {
             if (ReferenceEquals(lhs, null) || ReferenceEquals(rhs, null)) throw new ArgumentNullException();

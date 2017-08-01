@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    class SymmetricMatrix<T> : SquareMatrix<T>
+    public class SymmetricMatrix<T> : SquareMatrix<T>
     {
         public SymmetricMatrix(int order) : base(order, order, order + (order * order - order) / 2) { }
         protected SymmetricMatrix(int rows, int columns, int size) : base(rows, columns, size) { }

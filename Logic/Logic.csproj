@@ -45,6 +45,7 @@
     <Compile Include="Matrixes\AbstractMatrix.cs" />
     <Compile Include="Matrixes\DiagonalMatrix.cs" />
     <Compile Include="MathOperations.cs" />
+    <Compile Include="Matrixes\MatrixOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Set.cs" />
     <Compile Include="Matrixes\SquareMatrix.cs" />

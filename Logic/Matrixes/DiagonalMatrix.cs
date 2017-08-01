@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    class DiagonalMatrix<T> : SquareMatrix<T>
+    public class DiagonalMatrix<T> : SquareMatrix<T>
     {
-        public DiagonalMatrix(int order) : base(order, order, order) { }
+        public DiagonalMatrix(int order) : base(order, order, order)
+        {
+
+        }
         protected DiagonalMatrix(int rows, int columns, int size) : base(rows, columns, size) { }
 
         public override T this[int i, int j]

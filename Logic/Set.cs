@@ -10,13 +10,16 @@ namespace Logic
     class Set<T> : IEnumerable<T> where T : class
     {
         private List<T>[] buckets;
+        private IEqualityComparer<T> eqComparer;
         private int count;
         /// <summary>
         /// set constructor with size mode attribute
         /// </summary>
         /// <param name="mode">0 for rather small set(10 buckets), 1 for medium set (50 buckets), 2 for big 100 buckets set, other for 250 buckets</param>
-        public Set(byte mode = 0)
+        public Set(byte mode = 0,IEqualityComparer<T> eqComparer = null)
         {
+            if (ReferenceEquals(eqComparer, null)) this.eqComparer = (IEqualityComparer<T>) Comparer<T>.Default;
+            else this.eqComparer = eqComparer;
             if (mode == 0) buckets = new List<T>[10];
             else if (mode == 1) buckets = new List<T>[50];
             else if (mode == 2) buckets = new List<T>[100];
@@ -36,7 +39,7 @@ namespace Logic
             if (Contains(elem)) return;
             if (ReferenceEquals(elem, null)) throw new ArgumentNullException();
             count++;
-            buckets[GetBucketIndex(elem.GetHashCode())].Add(elem);
+            buckets[GetBucketIndex(eqComparer.GetHashCode(elem))].Add(elem);
         }
 
         /// <summary>
@@ -48,7 +51,7 @@ namespace Logic
             if (Contains(elem))
             {
                 count--;
-                buckets[GetBucketIndex(elem.GetHashCode())].Remove(elem);
+                buckets[GetBucketIndex(eqComparer.GetHashCode(elem))].Remove(elem);
             }
         }
 
@@ -137,7 +140,7 @@ namespace Logic
         /// <returns>check result</returns>
         public bool Contains(T elem)
         {
-            int index = GetBucketIndex(elem.GetHashCode());
+            int index = GetBucketIndex(eqComparer.GetHashCode(elem));
             if (buckets[index] == null) buckets[index] = new List<T>();
             foreach (T element in buckets[index])
             {

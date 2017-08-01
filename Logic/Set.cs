@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    class Set<T> : IEnumerable<T> where T : class, IEquatable<T>
+    class Set<T> : IEnumerable<T> where T : class
     {
         private List<T>[] buckets;
         private int count;

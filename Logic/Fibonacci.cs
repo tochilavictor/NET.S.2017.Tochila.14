@@ -8,16 +8,20 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    public class MathOperations
+    public class Fibonacci
     {
         /// <summary>
         /// imlementation of Fibonacci numbers generator
         /// </summary>
         /// <param name="n">index of last number</param>
         /// <returns>enumeration of fibonacci numbers</returns>
-        private static IEnumerable<BigInteger> FibonacciLong(int n)
+        public static IEnumerable<BigInteger> FibonacciNumbers(int n)
         {
             if (n < 1) throw new ArgumentOutOfRangeException($"{nameof(n)} must be natural");
+            return FibonacciGenerator(n);
+        }
+        private static IEnumerable<BigInteger> FibonacciGenerator(int n)
+        {
             BigInteger prevfib = 0;
             BigInteger curfib = 1;
             int i = 0;
